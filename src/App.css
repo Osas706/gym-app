@@ -83,6 +83,8 @@ body {
 .bodyPart-card {
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
+  z-index: 100;
+  
 }
 
 .exercise-card:hover,
