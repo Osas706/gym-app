@@ -23,12 +23,13 @@ const HeroBanner = () => {
         Check out the most effective exercises
       </Typography>
 
-      <Typography fontSize={'200px'} fontWeight={600} color={'#ff2625'} sx={{opacity: 0.1, display: {lg: 'block', xs: 'none'}}}>
-        Exercise
-      </Typography>
       <Button variant='contained' color='error' href='#exercises' sx={{ backgroundColor: '#ff2625', padding: '10px'}}>
         Explore Exercises
       </Button>
+
+      <Typography fontSize={'200px'} fontWeight={600} color={'#ff2625'} sx={{opacity: 0.1, display: {lg: 'block', xs: 'none'}}}>
+        Exercise
+      </Typography>
 
       <img src={HeroBannerImg} alt='banner' className='hero-banner-img'/>
     </Box>

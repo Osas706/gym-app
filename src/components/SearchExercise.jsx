@@ -1,17 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import { exerciseOption, fetchData } from '../utilis/fetchData'; 
 import HorizontalScrollbar from '../components/HorizontalScrollbar';
 
-const SearchExercise = ({ setExercises, bodyPart, setBodyPart}) => {
+const SearchExercise = ({ bodyPart, setBodyPart, setExercises}) => {
 
   const [ search, setSearch ] = useState('');
- 
-  const [bodyParts, setBodyParts] = useState([])
+  const [bodyParts, setBodyParts] = useState([]);
 
   useEffect(() => {
     const fetchExerciseData = async () => {
-      const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOption);
+      const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList/back?limit=100', exerciseOption);
 
       console.log(bodyPartsData);
       setBodyParts(['all', ...bodyPartsData]);
@@ -24,17 +23,15 @@ const SearchExercise = ({ setExercises, bodyPart, setBodyPart}) => {
     if(search){
       const exerciseData = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=900', exerciseOption);
 
-      const searchedExercises = exerciseData.filter((exercise) => 
-        exercise.name.toLowerCase().includes(search) ||
-        exercise.target.toLowerCase().includes(search) ||
-        exercise.equipment.toLowerCase().includes(search) ||
-        exercise.bodyPart.toLowerCase().includes(search)
+      const searchedExercises = exerciseData?.filter((exercise) => 
+        exercise?.name?.toLowerCase()?.includes(search) ||
+        exercise?.target?.toLowerCase()?.includes(search) ||
+        exercise?.equipment?.toLowerCase()?.includes(search) ||
+        exercise?.bodyPart?.toLowerCase()?.includes(search)
       );
 
-      console.log(exerciseData);
-
       setSearch('');
-      setExercises(searchedExercises)
+      setExercises(searchedExercises);
     }
   }
 
@@ -67,7 +64,8 @@ const SearchExercise = ({ setExercises, bodyPart, setBodyPart}) => {
             textTransform: 'none',
             width: {lg: '175px', xs: '80px'},
             fontSize: {lg: '20px', xs: '14px'},
-            height: '56px',position: 'absolute',
+            height: '56px',
+            position: 'absolute',
             right: 0,
           }}
           onClick={handleSearch}
