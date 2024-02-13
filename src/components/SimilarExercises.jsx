@@ -30,4 +30,4 @@ const SimilarExercises = ({equipmentExercises, targetMuscleExercises}) => {
   )
 }
 
-export default SimilarExercises
+export default SimilarExercises;
