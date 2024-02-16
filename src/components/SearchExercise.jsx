@@ -46,7 +46,7 @@ const SearchExercise = ({ bodyPart, setBodyPart, setExercises, isBodyParts}) => 
           height='76px'
           value={search}
           onChange={(e) => { setSearch(e.target.value.toLowerCase())}}
-          placeholder='Search Exercises'
+          placeholder='Search Body part ....'
           type='text'
           sx={{
             input: { fontWeight: '700', border: 'none', borderRadius: '4px'},
